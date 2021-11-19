@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Urban\UrbanRequestController;
 use App\Http\Controllers\Rural\RuralRequestController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,7 @@ Route::group([
     'as' => 'agro.',
     'middleware' => ['auth', 'auth.isAgro']
 ], function () {
-    //
+    Route::resource('products', ProductController::class);
 });
 
 require __DIR__ . '/auth.php';
