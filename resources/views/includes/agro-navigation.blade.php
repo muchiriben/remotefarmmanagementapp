@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('agro.products.index')" :active="request()->routeIs('agro.products.index')">
                         {{ __('Products') }}  
                     </x-nav-link>
+                    <x-nav-link :href="route('agro.product-categories.index')" :active="request()->routeIs('agro.product-categories.index')">
+                        {{ __('Product Categories') }}  
+                    </x-nav-link>
+                    <x-nav-link :href="route('order-keys.index')" :active="request()->routeIs('order-keys.index')">
+                        {{ __('Orders') }}  
+                    </x-nav-link>
                 </div>
             </div>
 

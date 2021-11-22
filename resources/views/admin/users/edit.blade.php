@@ -56,7 +56,7 @@
          <div class="mt-4">
             <x-label for="description" :value="__('Description')" />
 
-            <x-textarea id="description" class="block mt-1 w-full" type="text" name="description" value="{{ $user->description }}" placeholder="Description" autofocus />
+            <x-textarea id="description" class="block mt-1 w-full" type="text" name="description" value="{{ $user->description }}" placeholder="Description" autofocus>{{ $user->description }}</x-textarea>
         </div>
 
             <!--roles-->

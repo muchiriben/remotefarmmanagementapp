@@ -8,6 +8,12 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Urban\UrbanRequestController;
 use App\Http\Controllers\Rural\RuralRequestController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderKeyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +34,8 @@ Route::get('/', function () {
 //auth routes
 Route::get('/dashboard', DashboardController::class)->middleware('auth')->name('dashboard');
 Route::resource('profile', ProfileController::class)->middleware('auth');
+Route::resource('orders', OrderController::class)->middleware('auth');
+Route::resource('order-keys', OrderKeyController::class)->middleware('auth');
 
 //Admin routes
 Route::group([
@@ -45,6 +53,12 @@ Route::group([
     'middleware' => ['auth', 'auth.isUrban']
 ], function () {
     Route::resource('requests', UrbanRequestController::class);
+    Route::resource('shop', ShopController::class);
+    Route::resource('cart', CartController::class);
+    Route::resource('checkout', CheckoutController::class);
+    Route::get('/confirmed', function () {
+        return view('shop.confirmation');
+    })->name('payment.confirmation');
 });
 
 //Rural routes
@@ -63,6 +77,7 @@ Route::group([
     'middleware' => ['auth', 'auth.isAgro']
 ], function () {
     Route::resource('products', ProductController::class);
+    Route::resource('product-categories', CategoryController::class);
 });
 
 require __DIR__ . '/auth.php';

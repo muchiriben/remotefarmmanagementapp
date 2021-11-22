@@ -21,6 +21,12 @@
                     <x-nav-link :href="route('urban.requests.show', auth()->user()->id)" :active="request()->routeIs('urban.requests.show', auth()->user()->id)">
                         {{ __('My Requests') }}  
                     </x-nav-link>
+                    <x-nav-link :href="route('urban.shop.index')" :active="request()->routeIs('urban.shop.index')">
+                        {{ __('Shop') }}  
+                    </x-nav-link>
+                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                        {{ __('Orders') }}  
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -43,7 +49,13 @@
 
                         <x-dropdown-link :href="route('profile.show', auth()->user())">
                             {{ __('My Profile') }}
-                    </x-dropdown-link>
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('urban.cart.index')">
+                            {{ __('My Cart') }}
+                            @if (Cart::instance('default')->count() > 0)
+                            <span class="text-sm text-accent-color">({{ Cart::instance('default')->count()}})</span>
+                            @endif 
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
