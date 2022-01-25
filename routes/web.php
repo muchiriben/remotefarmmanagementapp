@@ -14,6 +14,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderKeyController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('/dashboard', DashboardController::class)->middleware('auth')->name('
 Route::resource('profile', ProfileController::class)->middleware('auth');
 Route::resource('orders', OrderController::class)->middleware('auth');
 Route::resource('order-keys', OrderKeyController::class)->middleware('auth');
+Route::resource('tasks', TaskController::class)->middleware('auth');
 
 //Admin routes
 Route::group([

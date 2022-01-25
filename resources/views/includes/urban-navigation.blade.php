@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('urban.requests.show', auth()->user()->id)" :active="request()->routeIs('urban.requests.show', auth()->user()->id)">
                         {{ __('My Requests') }}  
                     </x-nav-link>
+                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
+                        {{ __('Tasks') }}  
+                    </x-nav-link>
                     <x-nav-link :href="route('urban.shop.index')" :active="request()->routeIs('urban.shop.index')">
                         {{ __('Shop') }}  
                     </x-nav-link>

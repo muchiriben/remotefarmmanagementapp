@@ -17,6 +17,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('rural.requests.show', auth()->user()->id)" :active="request()->routeIs('rural.requests.show', auth()->user()->id)">
                         {{ __('My Requests') }} 
+                    </x-nav-link> 
+                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.index')">
+                        {{ __('Tasks') }} 
                     </x-nav-link>
                 </div>
             </div>

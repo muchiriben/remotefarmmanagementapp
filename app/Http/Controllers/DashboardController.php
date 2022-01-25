@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Gate;
+use App\Models\HireRequest;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -17,9 +19,29 @@ class DashboardController extends Controller
         if (Gate::allows('is-admin')) {
             return view('admin.dashboard');
         } else if (Gate::allows('is-urban-farmer')) {
-            return view('urban-farmer.dashboard');
+
+            $rural_farmers = collect([]);
+            $hirerequests = HireRequest::where('urban_farmer_id', auth()->user()->id)->get();
+            foreach ($hirerequests as $request) {
+                if ($request->status == "Accepted") {
+                    $farmer = User::find($request->rural_farmer_id);
+                    $rural_farmers->push($farmer);
+                }
+            }
+
+            return view('urban-farmer.dashboard')->with('rural_farmers', $rural_farmers);
         } else if (Gate::allows('is-rural-farmer')) {
-            return view('rural-farmer.dashboard');
+
+            $urban_farmers = collect([]);
+            $hirerequests = HireRequest::where('rural_farmer_id', auth()->user()->id)->get();
+            foreach ($hirerequests as $request) {
+                if ($request->status == "Accepted") {
+                    $farmer = User::find($request->urban_farmer_id);
+                    $urban_farmers->push($farmer);
+                }
+            }
+
+            return view('rural-farmer.dashboard')->with('urban_farmers', $urban_farmers);
         } else if (Gate::allows('is-agro-company')) {
             return view('agro-company.dashboard');
         }
