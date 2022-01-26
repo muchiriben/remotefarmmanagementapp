@@ -67,7 +67,8 @@
                         <!-- More items... -->
                       </tbody>
                     </table>
-                  </div>
+                  </div><br>
+                  {{ $tasks->links() }}
                 </div>
               </div>
             </div>
