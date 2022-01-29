@@ -15,6 +15,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderKeyController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,12 @@ Route::resource('profile', ProfileController::class)->middleware('auth');
 Route::resource('orders', OrderController::class)->middleware('auth');
 Route::resource('order-keys', OrderKeyController::class)->middleware('auth');
 Route::resource('tasks', TaskController::class)->middleware('auth');
+Route::post('/upload', [ContractController::class, 'upload'])->middleware('auth')->name('upload');
+Route::get('/download/{id}', [ContractController::class, 'download'])->middleware('auth')->name('download');
+Route::get('/rural-contract', [ContractController::class, 'ruralContract'])->middleware('auth')->name('ruralContract');
+Route::post('/ruralupload', [ContractController::class, 'ruralupload'])->middleware('auth')->name('ruralupload');
+Route::get('/urban-download/{id}', [ContractController::class, 'urbanDownload'])->middleware('auth')->name('urban-download');
+
 
 //Admin routes
 Route::group([

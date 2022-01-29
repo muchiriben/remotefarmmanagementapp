@@ -49,6 +49,7 @@ class UserController extends Controller
             'national_id' => ['integer', 'unique:users'],
             'profile_image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'description' => ['required', 'string'],
+            'location' => ['required', 'string'],
             'password' => ['required', Rules\Password::defaults()],
         ]);
 
@@ -58,6 +59,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'national_id' => $request->national_id,
             'description' => $request->description,
+            'location' => $request->location,
             'password' => Hash::make($request->password),
         ]);
 

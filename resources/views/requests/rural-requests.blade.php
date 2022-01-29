@@ -29,11 +29,17 @@
                       Farmer's Phone
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                      Farmer's Location
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
                       Request Date
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
                         Status
                     </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                      Download Contract
+                  </th>
                     <th scope="col" class="px-6 py-3">
                       <span class="sr-only">Accept/Reject</span>
                     </th>
@@ -65,6 +71,11 @@
                             {{ $farmer->phone }}
                             </div>
                         </td> 
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="text-sm font-medium text-gray-900">
+                          {{ $farmer->location }}
+                          </div>
+                      </td> 
                           @endif
                       @endforeach
                   
@@ -74,13 +85,20 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <div class="text-sm text-gray-900">{{ $request->status }}</div>
                     </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      @if ($request->status == "Accepted")
+                         <x-link-button :href="route('download', $request->urban_farmer_id)" class="h-12 px-4 ">
+                           {{ __('Contract') }}
+                         </x-link-button>
+                      @endif
+                    </td>
                     <td class="flex justify-center items-center px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <form action="{{ route('rural.requests.update', $request->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
                             
                             <x-input id="status" type="hidden" name="status" value="Accepted"/>
-                            <x-button class="w-20 mx-2 p-2 bg-red-600 rounded-md text-neutral-color shadow-md cursor-pointer">
+                            <x-button class="w-20 mx-2 p-2 pt-2 bg-red-600 rounded-md text-neutral-color shadow-md cursor-pointer">
                               {{ __('Accept') }}
                           </x-button>
                           </form>  

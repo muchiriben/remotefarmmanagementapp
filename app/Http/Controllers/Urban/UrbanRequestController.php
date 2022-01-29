@@ -17,9 +17,14 @@ class UrbanRequestController extends Controller
      */
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $farmers = Role::find(3)->users;
         //dd($farmers);
-        return view('requests.index')->with('farmers', $farmers);
+        return view('requests.index')
+            ->with([
+                'farmers' => $farmers,
+                'user' => $user,
+            ]);
     }
 
     /**

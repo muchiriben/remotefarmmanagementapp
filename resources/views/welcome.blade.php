@@ -105,7 +105,7 @@
               <span class="block text-secondary-color xl:inline">Management</span>
             </h1>
             <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque assumenda modi delectus necessitatibus maxime at, nam neque voluptatem deserunt perspiciatis. In iure eum voluptatum quaerat reprehenderit expedita officiis amet nihil?
+              Get complete control over the operations of your farm business with our farm management software. Assess each and every tasks done by your hired farmers with ease.
             </p>
             <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div class="rounded-md shadow">

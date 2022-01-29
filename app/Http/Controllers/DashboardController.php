@@ -17,7 +17,9 @@ class DashboardController extends Controller
     public function __invoke()
     {
         if (Gate::allows('is-admin')) {
-            return view('admin.dashboard');
+
+            $user = User::all();
+            return view('admin.dashboard')->with('users', $user);
         } else if (Gate::allows('is-urban-farmer')) {
 
             $rural_farmers = collect([]);

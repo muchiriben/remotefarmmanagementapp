@@ -27,8 +27,13 @@
                       <div class=" text-accent-color mb-2 whitespace-nowra">Name: {{ $farmer->name }}</div>
                       <div class="text-accent-color mb-2 whitespace-nowrap">Email: {{ $farmer->email }}</div>
                       <div class="text-accent-color mb-2 whitespace-nowrap">Phone: {{ $farmer->phone }}</div>
+                      <div class="text-accent-color mb-2 whitespace-nowrap">Location: {{ $farmer->location }}</div>
                       <div class="text-accent-color mb-2 whitespace-nowrap">About: {{ $farmer->description }}</div>
+                      <x-link-button :href="route('urban-download', $farmer->id)" class="h-12 px-4 ">
+                        {{ __('Contract') }}
+                   </x-link-button>
                     </div>
+        
                   </div>
                 </div>
         

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'national_id',
         'profile_image',
         'description',
+        'location',
         'password',
     ];
 
