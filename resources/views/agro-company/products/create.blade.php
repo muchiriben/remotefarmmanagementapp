@@ -22,8 +22,8 @@
             </div>
 
             <!-- Category -->
-            <div>
-                <x-label for="name" :value="__('Product Name')" />
+            <div class="mt-4">
+                <x-label for="name" :value="__('Product Category')" />
 
                 <select name="category" id="category">
                     @foreach ($categories as $category)
